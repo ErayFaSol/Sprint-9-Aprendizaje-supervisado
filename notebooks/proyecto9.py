@@ -85,7 +85,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
-from IPython.display import HTML
+#from IPython.print import HTML
 
 # %%
 # Cargar los datos
@@ -95,35 +95,35 @@ data = pd.read_csv("datasets/Churn.csv")
 data_clean = data.drop(['RowNumber', 'CustomerId', 'Surname'], axis=1)
 
 # Mostrar datos relevantes del dataframe
-display(HTML('<hr>'))
-display(HTML('<h1> Clientes de Beta-bank '))
-display(data_clean.head())
-display(data_clean.info())
-display(data_clean.describe())
-display(HTML('<hr>'))
+print('-----------------------------')
+print(' ===== Clientes de Beta-bank ===== ')
+print(data_clean.head())
+print(data_clean.info())
+print(data_clean.describe())
+print('-----------------------------')
 
 # Verificacion de datos nulos 
 nulos = data_clean.isnull().sum()
-display(HTML('<h2> Verificacion de valores nulos'))
-display(nulos)
+print('===== Verificacion de valores nulos =====')
+print(nulos)
 
 # Verificación de valores duplicados
 duplicados = data_clean.duplicated().sum()
-display(HTML('<h2> Verificación de valores duplicados </h2>'))
-display(f"Total de valores duplicados: {duplicados}")
+print('===== Verificación de valores duplicados =====')
+print(f"Total de valores duplicados: {duplicados}")
 # Eliminamos valores duplicados
 data_clean = data_clean.dropna()
 
-display(HTML('<hr>'))
+print('-----------------------------')
 
 comentario = """ 
-<h2> Comentario sobre la exploracion inicial del archivo </h2>
-<p> Al realizar la preparacion de los datos para poder seguir avanzando en el modelo nos dimos que cuanta que este no presenta valores duplicados, pero si nulos, para este caso se decidio descartarlos
+===== Comentario sobre la exploracion inicial del archivo =====
+Al realizar la preparacion de los datos para poder seguir avanzando en el modelo nos dimos que cuanta que este no presenta valores duplicados, pero si nulos, para este caso se decidio descartarlos
 dichos datos nulos abarcan 9% de los datos.
-<p> Tambien se econtro columnas categoricas las cuales requieren un manejo para poder funcionar en los modelos del machine learning
+Tambien se econtro columnas categoricas las cuales requieren un manejo para poder funcionar en los modelos del machine learning
 
 """
-display(HTML(comentario))
+print(comentario)
 
 
 # %% [markdown]
